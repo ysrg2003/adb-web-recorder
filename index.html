@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Web ADB Recorder</title>
+    <style>
+        #screen { width: 300px; height: 600px; border: 2px solid black; }
+        button { padding: 10px; margin: 5px; }
+    </style>
+</head>
+<body>
+    <h2>ADB Web Recorder</h2>
+    <div id="screen"></div>
+    <button onclick="startRecording()">Start Recording</button>
+    <button onclick="stopRecording()">Stop Recording</button>
+    <button onclick="play()">Play</button>
+
+    <script>
+        const BACKEND_URL = "https://YOUR_HEROKU_APP_NAME.herokuapp.com";
+
+        async function startRecording() {
+            await fetch(`${BACKEND_URL}/start_record`, { method: 'POST' });
+        }
+
+        async function stopRecording() {
+            await fetch(`${BACKEND_URL}/stop_record`, { method: 'POST' });
+        }
+
+        async function play() {
+            await fetch(`${BACKEND_URL}/play`, { method: 'POST' });
+        }
+    </script>
+</body>
+</html>
